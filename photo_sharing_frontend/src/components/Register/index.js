@@ -67,7 +67,6 @@ const LoginRegister = () => {
         setConfirmPasswordError("Confirm Password doesn't match Password");
         return;
       }
-      // Add validation for other fields
 
       // if (confirmPassword !== password) {
       //   isValid = false;
@@ -114,7 +113,7 @@ const LoginRegister = () => {
           password: password,
         })
       );
-      // If all fields are valid, proceed with registration
+      
       const response = await fetch(
         "https://vjdpc4-3000.csb.app/admin/register",
         {
@@ -164,7 +163,7 @@ const LoginRegister = () => {
         value={loginName}
         onChange={(e) => {
           setLoginName(e.target.value);
-          setLoginNameError(""); // change
+          setLoginNameError(""); 
         }}
         fullWidth
         margin="normal"
