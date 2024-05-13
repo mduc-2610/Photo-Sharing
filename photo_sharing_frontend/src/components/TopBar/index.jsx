@@ -49,25 +49,49 @@ const TopBar = ({ loggedInUser, setLoggedInUser }) => {
 
   return (
     <AppBar position="static">
-      <Toolbar>
+      <Toolbar
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <Link component={RouterLink} to="/" color="inherit" underline="none">
           <Typography variant="h6" color="inherit">
             Home
           </Typography>
         </Link>
-        <Typography variant="h6" color="inherit" style={{ marginLeft: "auto" }}>
-          {loggedInUser ? `Hi, ${loggedInUser.first_name}` : "Please login"}
-        </Typography>
-        {loggedInUser && (
-          <Button color="inherit" onClick={handleAddPhoto}>
-            Add Photo
-          </Button>
-        )}
-        {loggedInUser ? (
-          <Button color="inherit" onClick={handleLogout}>
-            Logout
-          </Button>
-        ) : null}
+        <div>
+          {loggedInUser ? (
+            <Button
+              color="inherit"
+              onClick={() => {
+                navigate(`/users/${loggedInUser._id}`);
+              }}
+              style={{ textTransform: "none" }}
+            >
+              Hi, {loggedInUser.first_name}
+            </Button>
+          ) : (
+            <Typography variant="h6" color="inherit">
+              Please login
+            </Typography>
+          )}
+          {loggedInUser && (
+            <Button
+              color="inherit"
+              onClick={handleAddPhoto}
+              style={{ textTransform: "none" }}
+            >
+              Add Photo
+            </Button>
+          )}
+          {loggedInUser ? (
+            <Button color="inherit" onClick={handleLogout}>
+              Logout
+            </Button>
+          ) : null}
+        </div>
       </Toolbar>
     </AppBar>
   );

@@ -37,7 +37,7 @@ function UserList({ sideBar }) {
       style={
         sideBar
           ? {
-              maxHeight: "450px",
+              maxHeight: "470px",
               overflowY: "auto",
               scrollbarWidth: "thin",
             }
