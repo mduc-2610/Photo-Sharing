@@ -1,0 +1,28 @@
+{
+  "name": "express-example-starter",
+  "version": "1.0.0",
+  "description": "An Express-based application skeleton",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js localhost 8080"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "16.4.5",
+    "express": "~4.16.1",
+    "express-session": "^1.18.0",
+    "mongoose": "^8.3.3",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "nodemon": "1.18.4"
+  },
+  "keywords": [
+    "expressjs",
+    "express"
+  ]
+}
