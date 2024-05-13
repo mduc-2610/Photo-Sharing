@@ -29,7 +29,6 @@ router.get("/:id", async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 });
-
 router.get("/photosOfUser/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -48,7 +47,7 @@ router.get("/photosOfUser/:id", async (req, res) => {
     if (photos) {
       const formattedPhotos = await Promise.all(
         photos.map(async (photo) => {
-          const formattedComments = await Promise.all(
+          let formattedComments = await Promise.all(
             photo.comments.map(async (comment) => {
               const commenter = await User.findById(comment.user_id);
               return {
@@ -63,6 +62,10 @@ router.get("/photosOfUser/:id", async (req, res) => {
             }),
           );
 
+          formattedComments.sort(
+            (a, b) => new Date(b.date_time) - new Date(a.date_time),
+          );
+
           return {
             _id: photo._id,
             file_name: photo.file_name,
@@ -72,6 +75,11 @@ router.get("/photosOfUser/:id", async (req, res) => {
           };
         }),
       );
+
+      formattedPhotos.sort(
+        (a, b) => new Date(b.date_time) - new Date(a.date_time),
+      );
+
       res.json(formattedPhotos);
     } else {
       res.json([]);
@@ -81,4 +89,5 @@ router.get("/photosOfUser/:id", async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 });
+
 module.exports = router;
