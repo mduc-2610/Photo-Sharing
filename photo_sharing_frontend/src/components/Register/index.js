@@ -155,11 +155,17 @@ const LoginRegister = () => {
   };
 
   return (
-    <div>
+    <div style={{ padding: "0 20px" }}>
+      <Typography variant="h6" gutterBottom>
+        Register
+      </Typography>
       <TextField
         label="Login Name"
         value={loginName}
-        onChange={(e) => setLoginName(e.target.value)}
+        onChange={(e) => {
+          setLoginName(e.target.value);
+          setLoginNameError(""); // change
+        }}
         fullWidth
         margin="normal"
         error={loginNameError !== ""}
@@ -169,7 +175,10 @@ const LoginRegister = () => {
         type="password"
         label="Password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => {
+          setPassword(e.target.value);
+          setPasswordError("");
+        }}
         fullWidth
         margin="normal"
         error={passwordError !== ""}
@@ -179,7 +188,10 @@ const LoginRegister = () => {
         type="password"
         label="Confirm Password"
         value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
+        onChange={(e) => {
+          setConfirmPassword(e.target.value);
+          setConfirmPasswordError("");
+        }}
         fullWidth
         margin="normal"
         error={confirmPasswordError !== ""}
@@ -188,7 +200,10 @@ const LoginRegister = () => {
       <TextField
         label="First Name"
         value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
+        onChange={(e) => {
+          setFirstName(e.target.value);
+          setFirstNameError("");
+        }}
         fullWidth
         margin="normal"
         error={firstNameError !== ""}
@@ -197,7 +212,10 @@ const LoginRegister = () => {
       <TextField
         label="Last Name"
         value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
+        onChange={(e) => {
+          setLastName(e.target.value);
+          setLastNameError("");
+        }}
         fullWidth
         margin="normal"
         error={lastNameError !== ""}
@@ -206,7 +224,10 @@ const LoginRegister = () => {
       <TextField
         label="Location"
         value={location}
-        onChange={(e) => setLocation(e.target.value)}
+        onChange={(e) => {
+          setLocation(e.target.value);
+          setLocationError("");
+        }}
         fullWidth
         margin="normal"
         error={locationError !== ""}
@@ -215,7 +236,10 @@ const LoginRegister = () => {
       <TextField
         label="Description"
         value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        onChange={(e) => {
+          setDescription(e.target.value);
+          setDescriptionError("");
+        }}
         fullWidth
         margin="normal"
         error={descriptionError !== ""}
@@ -224,7 +248,10 @@ const LoginRegister = () => {
       <TextField
         label="Occupation"
         value={occupation}
-        onChange={(e) => setOccupation(e.target.value)}
+        onChange={(e) => {
+          setOccupation(e.target.value);
+          setOccupationError("");
+        }}
         fullWidth
         margin="normal"
         error={occupationError !== ""}
@@ -240,7 +267,12 @@ const LoginRegister = () => {
           Registration successful!
         </Typography>
       )}
-      <Button variant="contained" onClick={handleRegister} fullWidth>
+      <Button
+        variant="contained"
+        onClick={handleRegister}
+        fullWidth
+        style={{ marginTop: "10px" }}
+      >
         Register
       </Button>
       <Typography

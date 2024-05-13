@@ -46,7 +46,10 @@ const App = () => {
           <Grid item sm={9}>
             <Paper
               className="main-grid-item"
-              style={{ overflowY: "auto", maxHeight: "calc(100vh - 80px)" }}
+              style={{
+                overflowY: "auto",
+                maxHeight: "calc(100vh - 80px)",
+              }}
             >
               <Routes>
                 {!loggedInUser && (
