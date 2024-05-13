@@ -123,7 +123,7 @@ function UserPhotos() {
             photo._id === photoId
               ? {
                   ...photo,
-                  comments: [...(photo.comments || []), formatComment],
+                  comments: [formatComment, ...(photo.comments || [])],
                 }
               : photo
           )
@@ -211,7 +211,13 @@ function UserPhotos() {
                 {photo.comments && photo.comments.length > 0 ? (
                   photo.comments.map((comment) => (
                     <div key={comment._id} style={{ marginBottom: "10px" }}>
-                      <Typography variant="body2">
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "5px",
+                        }}
+                      >
                         <Button
                           variant="text"
                           color="inherit"
@@ -227,7 +233,15 @@ function UserPhotos() {
                         >
                           {comment.user.first_name} {comment.user.last_name}
                         </Button>
-                      </Typography>
+                        <Typography
+                          variant="body2"
+                          style={{
+                            fontSize: "10px",
+                          }}
+                        >
+                          {formatDate(new Date(comment.date_time))}
+                        </Typography>
+                      </div>
                       <Typography
                         variant="body2"
                         dangerouslySetInnerHTML={{
